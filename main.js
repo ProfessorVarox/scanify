@@ -23,7 +23,7 @@ for (const file of commandFiles) {
     client.commands.set(command.name, command);
 }
 
-client.login(testtoken)
+client.login(token)
 
 client.once("ready", () => {
     console.log("Der Bot ist bereit")
