@@ -23,6 +23,8 @@ for (const file of commandFiles) {
     client.commands.set(command.name, command);
 }
 
+client.login(testtoken)
+
 client.once("ready", () => {
     console.log("Der Bot ist bereit")
     const data = require("./package.json")
@@ -125,7 +127,7 @@ client.on('message', message => {
                     })
                 }
                 getTokens().then(oldTokens => {
-                    if (oldTokens < 3) { return console.log("Tokens aufgebraucht")}
+                    if (oldTokens < 3) { return }
                     // console.log(oldTokens)
                     if (oldTokens < 39 && oldTokens > 34) {
                         let warnEbd = new Discord.MessageEmbed()
@@ -151,15 +153,15 @@ client.on('message', message => {
                             embed.setColor("RED")
                             embed.setDescription("**Achtung!** Es wurde unangemessener Inhalt gefunden");
                             message.channel.send(embed);
-                            if (autoDelete) {
-                                message.delete();
-                            }
                             if (notify && notifyChannel) {
                                 client.channels.fetch(notifyChannel).then(notcnl => {
                                     notcnl.send("Achtung! in <#" + message.channel + "> wurde ein anstößiges Bild gefunden!")
                                     const imgur = require('imgur');
                                     imgur.uploadUrl(url).then(function (json) {
                                         notcnl.send(json.data.link);
+                                        if (autoDelete) {
+                                            message.delete();
+                                        }
                                     }).catch(function (err) {
                                         console.error(err.message);
                                     });
@@ -218,8 +220,6 @@ client.on('message', message => {
         message.reply('❌ Fehler beim Ausführen des Commands! Bitte Support auf https://discord.gg/y8kXVkQ kontaktieren');
     }
 });
-
-client.login(token)
 
 var schedule = require('node-schedule');
 

@@ -88,9 +88,11 @@ module.exports = {
                 switch (value) {
                     case "clear" :
                         settings.set(message.guild.id,false,"notifychannel")
+                        message.channel.send("✅ Der Notify Channel wurde erfolgreich `entfernt`")
                         break
                     default :
                         settings.set(message.guild.id,message.mentions.channels.first().id,"notifychannel")
+                        message.channel.send("✅ Der Notify Channel wurde erfolgreich auf <#" + message.mentions.channels.first() + "> gesetzt")
                 }
             }
             else {

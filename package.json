@@ -1,6 +1,6 @@
 {
   "name": "scanify",
-  "version": "2.0.0",
+  "version": "2.0.1",
   "description": "Ein Bot der mit künstlicher Intelligenz Bilder in Discord scannt",
   "repository": "ssh://git@git.jetbrains.space/infinity-systems/SCANIFY/newscanify.git",
   "main": "main.js",

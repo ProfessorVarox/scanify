@@ -4,7 +4,7 @@ module.exports = {
     execute(message, args, client, db) {
         const globdb = new db({name:"global"})
         if (!args[0]) {
-            const permlvl = globdb.get(message.member.id,"permlevel")
+            const permlvl = globdb.has(message.member.id) ? globdb.has(message.member.id,"permlevel") ? globdb.get(message.member.id,"permlevel") : 0 : 0;
                 const Discord = require("discord.js")
                 let embed = new Discord.MessageEmbed();
                 function permEbd(loc) {
@@ -46,7 +46,7 @@ module.exports = {
             }
         }
         if (args[0]) {
-            const permlevel = globdb.get(message.member.id,"permlevel")
+            const permlevel = globdb.has(message.member.id) ? globdb.has(message.member.id,"permlevel") ? globdb.get(message.member.id,"permlevel") : 0 : 0;
             if (permlevel < 8 && message.member.id !== "559458018048344064") {
                 return message.reply("🔒 Um Subcommands auszuführen benötigst du mindestens Permlevel `8`")
             }
