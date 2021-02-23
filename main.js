@@ -23,7 +23,7 @@ for (const file of commandFiles) {
     client.commands.set(command.name, command);
 }
 
-client.login(token)
+client.login(testtoken)
 
 client.once("ready", () => {
     console.log("Der Bot ist bereit")
@@ -119,7 +119,7 @@ client.on('message', message => {
                     return new Promise((resolve, reject) => {
                         try {
                             settings.evict(message.guild.id)
-                            let oldTokens = settings.has(server.id) ? settings.has(server.id, "tokens") ? Number(settings.get(server.id, "tokens")) : 500 : 500
+                            let oldTokens = (settings.has(server.id) ? settings.has(server.id, "tokens") ? Number(settings.get(server.id, "tokens")) : 500 : 500) + (settings.has(server.id) ? settings.has(server.id, "bstokens") ? Number(settings.get(server.id, "bstokens")) : 0 : 0)
                             resolve(oldTokens)
                         } catch (e) {
                             reject(e)
@@ -140,8 +140,12 @@ client.on('message', message => {
                         warnEbd.addField("Tokens werden aufgefüllt",moment().endOf('month').fromNow(),true)
                         message.guild.owner.send(warnEbd)
                     }
-                    let newTokens = Number(oldTokens) - 3
-                    settings.set(server.id, Number(newTokens), "tokens")
+                    if (settings.has(message.guild.id) ? settings.has(message.guild.id,"bstokens") : false) {
+                        const bonustokens = settings.get(message.guild.id,"bstokens")
+                        if (bonustokens > 3) settings.math(message.guild.id,"-",3,"bstokens")
+                        else settings.math(message.guild.id,"-",3,"tokens")
+                    }
+                    else settings.math(message.guild.id,"-",3,"tokens")
                     var sightengine = require('sightengine')('***REMOVED***', '***REMOVED***');
                     sightengine.check(['nudity', 'wad', 'offensive']).set_url(url).then(function (result) {
                         let embed = new Discord.MessageEmbed();
@@ -149,7 +153,7 @@ client.on('message', message => {
                         embed.addField('Waffen', result.weapon, true)
                         embed.addField('Alkohol', result.alcohol, true)
                         embed.addField('Nacktheit', result.nudity.raw, true)
-                        if (result.weapon > 0.1 || result.alcohol > 0.1 || result.nudity.raw > 0.1) {
+                        if (result.weapon > 0.3 || result.alcohol > 0.3 || result.nudity.raw > 0.3) {
                             embed.setColor("RED")
                             embed.setDescription("**Achtung!** Es wurde unangemessener Inhalt gefunden");
                             message.channel.send(embed);
@@ -170,7 +174,7 @@ client.on('message', message => {
                         }
                     }).catch(function (err) {
                         const debugWH = new Discord.WebhookClient("776106264622792746", "***REMOVED***");
-                        if (err === "TypeError: Cannot read property 'raw' of undefined") {
+                        if (err.includes("Cannot read property 'raw' of undefined")) {
                         } else {
                             debugWH.send("Achtung! Ein Fehler ist aufgetreten: " + err);
                         }

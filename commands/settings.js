@@ -9,7 +9,8 @@ module.exports = {
         const setting = args[0]
         const value = args[1]
         if (!setting) {
-            function ebd(autoDelete,notify,notifyChannel,tokens,channelMode) {
+            settings.evict(message.guild.id)
+            function ebd(autoDelete,notify,notifyChannel,tokens,channelMode, bonusTokens) {
                 const Discord = require("discord.js")
                 let embed = new Discord.MessageEmbed()
                 embed.setTitle("Einstellungen")
@@ -22,7 +23,8 @@ module.exports = {
                 embed.addField("notify [on|off]",notify,true)
                 embed.addField("notifyChannel [#channel|clear]",notifyChannel,true)
                 embed.addField("channelMode [all|blacklist|whitelist]",channelMode,true)
-                embed.addField("Scan Tokens verfügbar", "`" + tokens + "`")
+                embed.addField("Scan Tokens verfügbar", "💠 Standard Tokens: `" + tokens + "` \n" +
+                    "🌟 Bonus Tokens: `" + bonusTokens + "`")
                 embed.setColor("BLURPLE")
                 message.channel.send(embed)
                 message.delete()
@@ -32,12 +34,14 @@ module.exports = {
                 const Vnot = settings.get(message.guild.id, "notify")
                 const Vchan = settings.get(message.guild.id, "notifychannel")
                 const Vtokens = settings.get(message.guild.id,"tokens")
+                const VtokensB = settings.has(message.guild.id,"bstokens") ? settings.get(message.guild.id,"bstokens") : 0
                 const ad = (Vad) ? "`on`" : "`off`"
                 const not = (Vnot) ? "`on`" : "`off`"
                 const notCnl = (!Vchan) ? "`Kein Channel angegeben`" : "<#" + Vchan + ">"
-                const tokens = (Vtokens) ? Vtokens : 500
+                const tokens = ((Vtokens) ? Vtokens : 500)
                 const cm = "`" + ((settings.has(message.guild.id)) ? (settings.has(message.guild.id,"channelmode")) ? settings.get(message.guild.id,"channelmode") : "all"  : "all") + "`"
-                ebd(ad, not, notCnl, tokens, cm)
+                const bonut = (VtokensB ? VtokensB : 0)
+                ebd(ad, not, notCnl, tokens, cm, bonut)
             }
             const hasval = settings.has(message.guild.id)
             if (hasval) {
