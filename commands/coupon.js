@@ -12,7 +12,7 @@ module.exports = {
         var coupons = new db({name:"coupons"})
         const permlvl = (users.has(message.member.id)) ? users.has(message.member.id,"permlevel") ? users.get(message.member.id,"permlevel") : 0 : 0
         const action = args[0]
-        if (permlvl < 7 && action !== "redeem") return message.reply("🔒 Dazu hast du keine Berechtigung")
+        if (permlvl < 7) if (action !== "redeem") return message.reply("🔒 Dazu hast du keine Berechtigung")
         const value = args[1]
         const entity = args[2]
         if (!action || action === "help") {
