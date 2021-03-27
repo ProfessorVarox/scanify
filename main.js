@@ -13,8 +13,6 @@ moment.locale("de")
 
 const utils = require("./utils/discordtools")
 
-// const du = require("./utils/discord")
-
 const client = new Discord.Client();
 client.commands = new Discord.Collection();
 const commandFiles = fs.readdirSync('./commands').filter(file => file.endsWith('.js'));
@@ -23,7 +21,7 @@ for (const file of commandFiles) {
     client.commands.set(command.name, command);
 }
 
-client.login(token)
+client.login(testtoken)
 
 client.once("ready", () => {
     console.log("Der Bot ist bereit")
@@ -87,7 +85,6 @@ client.on("guildDelete", (guild) => {
 client.on('message', message => {
     if (message.guild && message.channel.type === "text") if (!settings.has(message.guild.id)) settings.set(message.guild.id,"all","channelmode")
     if (message.attachments.first()) {
-        // console.log(message.attachments.first().name)
         const cm = settings.has(message.guild.id) ? settings.has(message.guild.id, "channelmode") ? settings.get(message.guild.id, "channelmode") : "all" : "all"
         switch (cm) {
             case "all" :
@@ -105,8 +102,6 @@ client.on('message', message => {
                     autoScan()
                 }
                 break
-            default :
-                autoScan()
         }
 
         function autoScan() {
@@ -119,6 +114,8 @@ client.on('message', message => {
                     return new Promise((resolve, reject) => {
                         try {
                             settings.evict(message.guild.id)
+                            if (!(settings.has(server.id) ? settings.has(server.id, "tokens") : false)) settings.set(server.id, 500 ,"tokens")
+                            settings.evict(message.guild.id)
                             let oldTokens = (settings.has(server.id) ? settings.has(server.id, "tokens") ? Number(settings.get(server.id, "tokens")) : 500 : 500) + (settings.has(server.id) ? settings.has(server.id, "bstokens") ? Number(settings.get(server.id, "bstokens")) : 0 : 0)
                             resolve(oldTokens)
                         } catch (e) {
@@ -128,7 +125,6 @@ client.on('message', message => {
                 }
                 getTokens().then(oldTokens => {
                     if (oldTokens < 3) { return }
-                    // console.log(oldTokens)
                     if (oldTokens < 39 && oldTokens > 34) {
                         let warnEbd = new Discord.MessageEmbed()
                         warnEbd.setTitle("⚠ Tokens fast aufgebraucht")
