@@ -87,7 +87,7 @@ module.exports = {
                 else settings.math(message.guild.id,"+",Number(cdata.tokens),"bstokens")
             } catch (error) {
                 console.error("Fehler auf Server " + message.guild.id + " : " + error);
-                let wh = new Discord.WebhookClient("**REMOVED**", "**REMOVED**")
+                let wh = new Discord.WebhookClient("776106264622792746", "***REMOVED***")
                 let embed = new Discord.MessageEmbed();
                 embed.setTitle("Fehlermeldung")
                 embed.addField("Text",error.message)
@@ -115,7 +115,7 @@ module.exports = {
                 coupons.delete(value)
             } catch (error) {
                 console.error("Fehler auf Server " + message.guild.id + " : " + error);
-                let wh = new Discord.WebhookClient("**REMOVED**", "**REMOVED**")
+                let wh = new Discord.WebhookClient("776106264622792746", "***REMOVED***")
                 let embed = new Discord.MessageEmbed();
                 embed.setTitle("Fehlermeldung")
                 embed.addField("Text",error.message)
@@ -167,7 +167,7 @@ module.exports = {
             ])
             message.channel.send(listEbd).catch(error => {
                 console.error("Fehler auf Server " + message.guild.id + " : " + error);
-                let wh = new Discord.WebhookClient("**REMOVED**", "**REMOVED**")
+                let wh = new Discord.WebhookClient("776106264622792746", "***REMOVED***")
                 let embed = new Discord.MessageEmbed();
                 embed.setTitle("Fehlermeldung")
                 embed.addField("Text",error.message)

@@ -48,7 +48,7 @@ module.exports = {
                         setdb.set(entity,true,"blocked")
                     } catch (error) {
                         console.error("Fehler auf Server " + message.guild.id + " : " + error);
-                        let wh = new Discord.WebhookClient("**REMOVED**", "**REMOVED**")
+                        let wh = new Discord.WebhookClient("776106264622792746", "***REMOVED***")
                         let embed = new Discord.MessageEmbed();
                         embed.setTitle("Fehlermeldung")
                         embed.addField("Text",error.message)
@@ -72,7 +72,7 @@ module.exports = {
                         message.channel.send("✅ Der Server wurde erfolgreich gesperrt und der Bot hat den Server verlassen")
                     }).catch(error => {
                         console.error("Fehler auf Server " + message.guild.id + " : " + error);
-                        let wh = new Discord.WebhookClient("**REMOVED**", "**REMOVED**")
+                        let wh = new Discord.WebhookClient("776106264622792746", "***REMOVED***")
                         let embed = new Discord.MessageEmbed();
                         embed.setTitle("Fehlermeldung")
                         embed.addField("Text",error.message)
@@ -88,7 +88,7 @@ module.exports = {
                         setdb.delete(entity,"blocked")
                     } catch (error) {
                         console.error("Fehler auf Server " + message.guild.id + " : " + error);
-                        let wh = new Discord.WebhookClient("**REMOVED**", "**REMOVED**")
+                        let wh = new Discord.WebhookClient("776106264622792746", "***REMOVED***")
                         let embed = new Discord.MessageEmbed();
                         embed.setTitle("Fehlermeldung")
                         embed.addField("Text",error.message)

@@ -34,7 +34,7 @@ module.exports = {
             ])
             message.channel.send(embed).catch(error => {
                 console.error("Fehler auf Server " + message.guild.id + " : " + error);
-                let wh = new Discord.WebhookClient("**REMOVED**", "**REMOVED**")
+                let wh = new Discord.WebhookClient("776106264622792746", "***REMOVED***")
                 let embed = new Discord.MessageEmbed();
                 embed.setTitle("Fehlermeldung")
                 embed.addField("Text",error.message || error)
@@ -67,7 +67,7 @@ module.exports = {
         }
         }).catch(error => {
             console.error("Fehler auf Server " + message.guild.id + " : " + error);
-            let wh = new Discord.WebhookClient("**REMOVED**", "**REMOVED**")
+            let wh = new Discord.WebhookClient("776106264622792746", "***REMOVED***")
             let embed = new Discord.MessageEmbed();
             embed.setTitle("Fehlermeldung")
             embed.addField("Text",error.message || error)

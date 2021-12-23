@@ -133,7 +133,7 @@ module.exports = {
                 embed.addField("Scan Modus", (settings.has(message.guild.id)) ? (settings.has(message.guild.id,"channelmode")) ? settings.get(message.guild.id,"channelmode") : "all"  : "all")
                 message.channel.send(embed).catch(error => {
                     console.error("Fehler auf Server " + message.guild.id + " : " + error);
-                    let wh = new Discord.WebhookClient("**REMOVED**", "**REMOVED**")
+                    let wh = new Discord.WebhookClient("776106264622792746", "***REMOVED***")
                     let embed = new Discord.MessageEmbed();
                     embed.setTitle("Fehlermeldung")
                     embed.addField("Text",error.message)
@@ -151,7 +151,7 @@ module.exports = {
                     }
                     catch (error) {
                         console.error("Fehler auf Server " + message.guild.id + " : " + error);
-                        let wh = new Discord.WebhookClient("**REMOVED**", "**REMOVED**")
+                        let wh = new Discord.WebhookClient("776106264622792746", "***REMOVED***")
                         let embed = new Discord.MessageEmbed();
                         embed.setTitle("Fehlermeldung")
                         embed.addField("Text",error.message || error)
@@ -168,7 +168,7 @@ module.exports = {
                     }
                     catch (error) {
                         console.error("Fehler auf Server " + message.guild.id + " : " + error);
-                        let wh = new Discord.WebhookClient("**REMOVED**", "**REMOVED**")
+                        let wh = new Discord.WebhookClient("776106264622792746", "***REMOVED***")
                         let embed = new Discord.MessageEmbed();
                         embed.setTitle("Fehlermeldung")
                         embed.addField("Text",error.message || error)
@@ -185,7 +185,7 @@ module.exports = {
                     }
                     catch (error) {
                         console.error("Fehler auf Server " + message.guild.id + " : " + error);
-                        let wh = new Discord.WebhookClient("**REMOVED**", "**REMOVED**")
+                        let wh = new Discord.WebhookClient("776106264622792746", "***REMOVED***")
                         let embed = new Discord.MessageEmbed();
                         embed.setTitle("Fehlermeldung")
                         embed.addField("Text",error.message || error)
@@ -212,7 +212,7 @@ module.exports = {
             embed.addField(">settings channels <add | set | remove | list> [#channel1] [#channel2] [#channel3] ...", "Stellt die Channel ein, die geblacklistet/gewhitelistet werden sollen (s. \"channelmode\" Einstellung) \n\n`add`: Fügt Channel der Liste hinzu \n`set`: Ersetzt alle Channel durch die Angegebenen \n`remove`: Entfernt alle angegebenen Channel aus der Liste \n`list`: Zeigt alle gewählten Channel")
             message.channel.send(embed).catch(error => {
                 console.error("Fehler auf Server " + message.guild.id + " : " + error);
-                let wh = new Discord.WebhookClient("**REMOVED**", "**REMOVED**")
+                let wh = new Discord.WebhookClient("776106264622792746", "***REMOVED***")
                 let embed = new Discord.MessageEmbed();
                 embed.setTitle("Fehlermeldung")
                 embed.addField("Text",error.message || error)
