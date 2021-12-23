@@ -49,10 +49,11 @@ client.on("guildCreate", (guild) => {
         .setTitle('Server hinzugefügt')
         .setDescription(`Scanify wurde auf Server **` + guild.name + "** (" + guild.id + ") von " + guild.owner + " (" + guild.ownerID + ") hinzugefügt")
         .setColor('#37D9E7');
-    const logwh = new Discord.WebhookClient("**REMOVED**","**REMOVED**")
+    // https://canary.discord.com/api/webhooks/765226444556206120/***REMOVED***
+    const logwh = new Discord.WebhookClient("765226444556206120","***REMOVED***")
     logwh.send(embed).catch(error => {
         console.error("Fehler auf Server " + message.guild.id + " : " + error);
-        let wh = new Discord.WebhookClient("**REMOVED**", "**REMOVED**")
+        let wh = new Discord.WebhookClient("776106264622792746", "***REMOVED***")
         let embed = new Discord.MessageEmbed();
         embed.setTitle("Fehlermeldung")
         embed.addField("Text",error.message)
@@ -67,10 +68,11 @@ client.on("guildDelete", (guild) => {
         .setTitle('Server entfernt')
         .setDescription(`Scanify wurde von Server **` + guild.name + "** (" + guild.id + ") von " + guild.owner + " (" + guild.ownerID + ") entfernt")
         .setColor('#37D9E7');
-    const logwh = new Discord.WebhookClient("**REMOVED**","**REMOVED**")
+    // https://canary.discord.com/api/webhooks/765226444556206120/***REMOVED***
+    const logwh = new Discord.WebhookClient("765226444556206120","***REMOVED***")
     logwh.send(embed).catch(error => {
         console.error("Fehler auf Server " + message.guild.id + " : " + error);
-        let wh = new Discord.WebhookClient("**REMOVED**", "**REMOVED**")
+        let wh = new Discord.WebhookClient("776106264622792746", "***REMOVED***")
         let embed = new Discord.MessageEmbed();
         embed.setTitle("Fehlermeldung")
         embed.addField("Text",error.message)
@@ -140,7 +142,7 @@ client.on('message', message => {
                         else settings.math(message.guild.id,"-",3,"tokens")
                     }
                     else settings.math(message.guild.id,"-",3,"tokens")
-                    var sightengine = require('sightengine')('**REMOVED**', '**REMOVED**');
+                    var sightengine = require('sightengine')('***REMOVED***', '***REMOVED***');
                     sightengine.check(['nudity', 'wad', 'offensive']).set_url(url).then(function (result) {
                         let embed = new Discord.MessageEmbed();
                         embed.setTitle("Scan Ergebnis");
@@ -167,7 +169,7 @@ client.on('message', message => {
                             }
                         }
                     }).catch(function (err) {
-                        const debugWH = new Discord.WebhookClient("**REMOVED**", "**REMOVED**");
+                        const debugWH = new Discord.WebhookClient("776106264622792746", "***REMOVED***");
                         if (err.includes("Cannot read property 'raw' of undefined")) {
                         } else {
                             debugWH.send("Achtung! Ein Fehler ist aufgetreten: " + err);
@@ -175,7 +177,7 @@ client.on('message', message => {
                     });
                 }).catch(error => {
                     console.error("Fehler auf Server " + message.guild.id + " : " + error);
-                    let wh = new Discord.WebhookClient("**REMOVED**", "**REMOVED**")
+                    let wh = new Discord.WebhookClient("776106264622792746", "***REMOVED***")
                     let embed = new Discord.MessageEmbed();
                     embed.setTitle("Fehlermeldung")
                     embed.addField("Text",error.message)
@@ -209,7 +211,7 @@ client.on('message', message => {
         client.commands.get(command).execute(message, args, client, db);
     } catch(error) {
         console.error("Fehler auf Server " + message.guild.id + " : " + error);
-        let wh = new Discord.WebhookClient("**REMOVED**", "**REMOVED**")
+        let wh = new Discord.WebhookClient("776106264622792746", "***REMOVED***")
         let embed = new Discord.MessageEmbed();
         embed.setTitle("Fehlermeldung")
         embed.addField("Text",error.message)
