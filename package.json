@@ -16,7 +16,7 @@
     "ai"
   ],
   "author": "Johannes von der Meden",
-  "license": "ISC",
+  "license": "MPL-2.0",
   "dependencies": {
     "discord.js": "^12.5.1",
     "enmap": "^5.8.4",
